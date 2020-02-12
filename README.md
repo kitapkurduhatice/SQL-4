@@ -1,6 +1,8 @@
 # SQL-4
 PL-SQL kodlarını yazınız..
 
+Yazılması istenilen sql kodu:
+
 Job Name1
 Personel Name1, Salary1
 Personel Name2, Salary2
