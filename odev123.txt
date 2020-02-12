@@ -1,0 +1,29 @@
+CREATE OR REPLACE FUNCTION JOB_LISTELE 
+RETURN NUMBER AS 
+SALARY NUMBER;
+maas_toplam number;
+SUM_MAAS NUMBER :=0;
+BEGIN
+
+for rec in( select j.job_id, j.job_title from jobs j)
+ loop
+ MAAS_TOPLAM:=0;
+  dbms_output.put_line('JOB NAME: ' ||rec.job_title);
+     
+      for reca in(select * from employees where employees.job_id=rec.job_id)
+        loop
+         dbms_output.put_line('Personel name and salary: ' || reca.first_name|| ' '||RECA.LAST_NAME || ' '|| reca.salary);      
+         MAAS_TOPLAM:= MAAS_TOPLAM + RECA.SALARY;
+         SUM_MAAS:= SUM_MAAS+ MAAS_TOPLAM;
+         end loop;
+           dbms_output.put_line(rec.job_title||'SALARY SUM:  ' || maas_toplam);
+   end loop;      
+   dbms_output.put_line('SUM SALARY: ' ||SUM_MAAS);
+return salary;
+END JOB_LISTELE;
+
+--hr--
+
+SELECT J.JOB_TITLE,E.FIRST_NAME||' '||E.LAST_NAME,E.SALARY,JOB_LISTELE
+FROM EMPLOYEES E,JOBS J;
+
